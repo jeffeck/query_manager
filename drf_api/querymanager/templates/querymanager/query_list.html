@@ -1,0 +1,11 @@
+
+
+<h1>Query List</h1>
+
+
+<ul>
+{% for query in query_list %}
+    <li><h2><a href="{% url 'query_detail' pk=query.query_id %}">{{ query }}</a></h2></li>
+{% endfor %}
+</ul>
+
