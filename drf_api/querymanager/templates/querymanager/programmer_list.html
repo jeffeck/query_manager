@@ -1,0 +1,14 @@
+{% extends "querymanager/base.html" %}
+{% load static %}
+{% block content %}
+
+{% for programmer in programmer_list %}
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{ programmer.name }}</h5>
+        </div>
+    </div>
+
+  {% endfor %}
+
+{% endblock %}

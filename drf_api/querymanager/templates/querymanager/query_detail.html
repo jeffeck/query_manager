@@ -1,8 +1,32 @@
+{% extends "querymanager/base.html" %}
+{% load static %}
+{% block content %}
 
-<h2>Query Name: {{ query.name }}</h2>
-<h3>Author: {{query.author.name }}</h3>
-<h4>Created at: {{ query.created_at }}</h4>
-<h4>Last Updated: {{ query.updated_at }}</h4>
 
-<h2>Query:</h2>
-<p>{{ query.query }}</p>
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">{{ query.name }}</h5>
+        <p class="card-text">
+            <code>{{ query.query }}</code>
+        </p>
+
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Author: {{query.author.name }}</li>
+        <li class="list-group-item">Created: {{ query.created_at }}</li>
+        <li class="list-group-item">Updated: {{ query.updated_at }}</li>
+        {% if query.tags.all %}
+        <li class="list-group-item">Tags: 
+            {% for tag in query.tags.all %}
+            <span class="badge badge-{% cycle 'primary' 'secondary' 'success' 'danger' 'warning' 'info' 'light' 'dark' %}">
+                {{ tag.tag_name }}
+            </span>
+
+            {% endfor %}
+        </li>
+        {% endif %}
+    </ul>
+</div>
+
+
+{% endblock %}

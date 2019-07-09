@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
+          <ul class="navbar-nav">
+            <!-- <li class="nav-item {# if request.path in ' ,/queries/' #} active {# endif #}"> -->
+            <!-- See views.py:QueryList to see how 'query_active' is being set -->
+            <li class="nav-item {{ query_active }}">
+              <a class="nav-link" href="{% url 'querylist' %}">Queries</a>
+            </li>
+            <li class="nav-item {% if request.path == '/programmers/' %} active {% endif %}">
+                <a class="nav-link" href="{% url 'programmer_list' %}">Programmers</a>
+              </li>
+            <li class="nav-item {% if request.path == '/tags/' %} active {% endif %}">
+              <a class="nav-link" href="{% url 'tag_list' %}">Tags</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/api-auth/">API</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin/">Admin</a>
+            </li>
+
+          </ul>
+        </div>
+      </nav>

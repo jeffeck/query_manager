@@ -5,7 +5,8 @@ from api import views
 router = routers.DefaultRouter()
 router.register('query', views.QueryViewSet) 
 router.register('programmer', views.ProgrammerViewSet)
+router.register('tag', views.TagViewSet)
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('', include(router.urls), name="api"),
 ]

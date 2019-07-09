@@ -2,8 +2,13 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from rest_framework import viewsets
 
-from .serializers import QuerySerializer, ProgrammerSerializer
-from querymanager.models import Query, Programmer
+from .serializers import QuerySerializer, ProgrammerSerializer, TagSerializer
+from querymanager.models import Query, Programmer, Tag
+
+
+class TagViewSet(viewsets.ModelViewSet):
+    queryset = Tag.objects.all()
+    serializer_class = TagSerializer
 
 class QueryViewSet(viewsets.ModelViewSet):
     queryset = Query.objects.all()

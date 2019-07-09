@@ -1,0 +1,13 @@
+{% extends "querymanager/base.html" %}
+{% load static %}
+{% block content %}
+
+{% for tag in tags %}
+    {{ tag.tag_name }} --> 
+    <span class="badge badge-{% cycle 'primary' 'secondary' 'success' 'danger' 'warning' 'info' 'light' 'dark' %}">
+        {{ tag.tag_description }}
+    </span><br>
+{% endfor %}
+
+
+{% endblock %}
