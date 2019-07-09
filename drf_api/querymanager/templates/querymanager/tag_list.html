@@ -1,13 +1,48 @@
 {% extends "querymanager/base.html" %}
 {% load static %}
+{% load my_tags %}
+
+
 {% block content %}
 
-{% for tag in tags %}
-    {{ tag.tag_name }} --> 
-    <span class="badge badge-{% cycle 'primary' 'secondary' 'success' 'danger' 'warning' 'info' 'light' 'dark' %}">
-        {{ tag.tag_description }}
-    </span><br>
-{% endfor %}
+<h1>Tags</h1>
 
+<div class="accordion" id="accordionExample">
 
-{% endblock %}
+    {% for tag in tags %}
+
+    <div class="card">
+        <button class="btn btn-link collapsed card-header text-left" type="button" data-toggle="collapse" 
+                data-target="#collapse{{ tag.tag_name }}" aria-expanded="false" 
+                aria-controls="collapse{{ tag.tag_name }}"
+                id="heading{{ tag.tag_name }}">
+
+            {{ tag.tag_description }}
+        </button>
+    
+        <div id="collapse{{ tag.tag_name }}" class="collapse" 
+                aria-labelledby="heading{{ tag.tag_name }}" data-parent="#accordionExample">
+            <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                            {% for query in query_list %}
+                    {% for qtag in query.tags.all %}
+                        {% if qtag|stringformat:"s" == tag.tag_name %}
+
+                                <a href="{% url 'query_detail' pk=query.query_id %}" 
+                                        class="list-group-item list-group-item-action">
+                                    <li class="list-group-item">{{ query }}</li>
+                                </a>
+
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock content %}

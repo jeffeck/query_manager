@@ -1,18 +1,21 @@
 {% extends "querymanager/base.html" %}
 {% load static %}
-{% block content %}
 
+
+{% block content %}
 
 <h1>Query List</h1>
 
-
 <ul>
 {% for query in query_list %}
-<div class="list-group">
+    <div class="list-group">
         <a href="{% url 'query_detail' pk=query.query_id %}" class="list-group-item list-group-item-action">
             {{ query }}
         </a>
+    </div>
+
 {% endfor %}
 </ul>
 
 {% endblock %}
+

@@ -25,7 +25,9 @@ SECRET_KEY = '_px!adk58grj&=0^ur4b0ad9n^^e=jg-mm+v$d4&d*5=jg2#8$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# This is empty by default. By adding the "server" IP, it is accessible to 
+#  any device accessing the IP and port
+ALLOWED_HOSTS = ['127.0.0.1', '10.56.241.36']
 
 
 # Application definition

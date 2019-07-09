@@ -1,14 +1,46 @@
 {% extends "querymanager/base.html" %}
 {% load static %}
+
+
+
 {% block content %}
 
+<h1>Programmer List</h1>
+
+<div class="accordion" id="accordionExample">
+
 {% for programmer in programmer_list %}
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">{{ programmer.name }}</h5>
+
+    <div class="card">
+        <button class="btn btn-link collapsed card-header text-left" type="button" data-toggle="collapse" style="text-decoration: none;"
+            data-target="#collapse{{ programmer.programmer_id }}" aria-expanded="false"
+            aria-controls="collapse{{ programmer.programmer_id"
+            id="heading{{ programmer.programmer_id }}">
+                {{ programmer.name }}    
+        </button>
+
+        <div id="collapse{{ programmer.programmer_id }}" class="collapse"
+                aria-labelledby="heading{{ programmer.programmer_id }}" data-parent="#accordionExample">
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                {% for query in query_list %}
+                    {% if query.author.name == programmer.name %}
+                        <a href="{% url 'query_detail' pk=query.query_id %}" 
+                                class="list-group-item list-group-item-action">
+                            <li class="list-group-item">{{ query }}</li>
+                        </a>
+                    {% endif %}
+                {% endfor %}
+                </ul>
+            </div>
         </div>
+
     </div>
 
-  {% endfor %}
+{% endfor %}
 
-{% endblock %}
+
+</div>
+
+
+{% endblock content %}
