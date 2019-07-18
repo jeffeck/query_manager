@@ -16,4 +16,4 @@ class QuerySerializer(serializers.HyperlinkedModelSerializer):
 class ProgrammerSerializer(serializers.HyperlinkedModelSerializer): 
     class Meta:
         model = Programmer
-        fields = ('programmer_id', 'name')
+        fields = ('programmer_id', 'name', 'title', 'hire_date')

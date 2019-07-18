@@ -1,0 +1,56 @@
+{% extends "querymanager/base.html" %}
+{% load static %}
+
+
+{% block script %}
+<script>
+
+    $(".api").click(function () {
+        api_id = $(this)[0].id;
+        programmer_id = api_id.substring(4,);
+
+        $.ajax({
+            // call the api with the programmer id of the element clicked
+            url: '/api-auth/programmer/' + programmer_id + '/',
+            dataType: 'json',
+            success: function(result) {
+                console.log(result);
+                // apply logic to result of api call
+                // rev_title = result.title.split("").reverse().join("");
+                // modify dom with new information
+                $("#title").text(result.title);
+                // $("#hiredate").text("Hired on: " + result.hire_date);
+            },
+            error: function(status, exception) {
+                alert('error message fired')
+            }
+        });
+    });
+</script>
+
+{% endblock script %}
+
+
+
+
+
+{% block content %}
+
+<div class="row">
+    <div class="col-lg-12">
+
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+
+                <h5 class="card-title">{{ programmer.name }}</h5>
+                <p class="card-text" id="hiredate">{{ programmer.hire_date|date:'l, F d, Y' }}</p>
+                <p class="card-text" id="title"></p>
+                <a href="#" class="btn btn-primary api" id="api_{{ programmer.programmer_id }}">Call API</a>
+            </div>
+          </div>
+
+    </div>
+</div>
+
+
+{% endblock %}

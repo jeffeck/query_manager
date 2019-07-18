@@ -9,6 +9,8 @@ class Programmer(models.Model):
 
     programmer_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
+    title = models.CharField(max_length=100)
+    hire_date = models.DateField(null=True)
 
 
 class Tag(models.Model): 

@@ -8,16 +8,16 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" type="text/css" href="{% static 'blog/main.css' %}"> -->
+    <link rel="stylesheet" type="text/css" href="{% static 'querymanager/site.css' %}">
     {% block stylesheet %}{% endblock %}
     
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <!-- {% if title %}
+        {% if title %}
             <title>{{ title }}</title>
         {% else %}
-            <title>Iris App</title>
-        {% endif %} -->
-    <title>{% block title %}Default Title{% endblock %}</title>
+            <title>Query Manager</title>
+        {% endif %}
+    <!-- <title>{% block title %}Default Title{% endblock %}</title> -->
 
 </head>
 

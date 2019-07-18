@@ -1,6 +1,17 @@
 {% extends "querymanager/base.html" %}
 {% load static %}
 
+{% block stylesheet %}
+<style>
+.btn-uniform { 
+    width: 80px !important;
+}
+.wiu {
+    color: white;
+    background-color: #639;
+}
+</style>
+{% endblock %}
 
 
 {% block content %}
@@ -12,12 +23,27 @@
 {% for programmer in programmer_list %}
 
     <div class="card">
-        <button class="btn btn-link collapsed card-header text-left" type="button" data-toggle="collapse" style="text-decoration: none;"
-            data-target="#collapse{{ programmer.programmer_id }}" aria-expanded="false"
-            aria-controls="collapse{{ programmer.programmer_id"
-            id="heading{{ programmer.programmer_id }}">
-                {{ programmer.name }}    
-        </button>
+
+        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-group mr-2" role="group" aria-label="First group">
+                <button type="button" class="btn wiu btn-uniform">
+                    {{ programmer.name }}
+                </button>
+            </div>
+            <div class="btn-group mr-2" role="group" aria-label="Second group">
+                <button class="btn btn-secondary collapsed" type="button" data-toggle="collapse" style="text-decoration: none;"
+                        data-target="#collapse{{ programmer.programmer_id }}" aria-expanded="false"
+                        aria-controls="collapse{{ programmer.programmer_id"
+                        id="heading{{ programmer.programmer_id }}">
+                    Queries
+                </button>
+                <button type="button" class="btn btn-success">
+                    <a href="{% url 'programmer_detail' pk=programmer.programmer_id %}" style="color: white;text-decoration: none;">
+                        Profile
+                    </a>
+                </button>
+            </div>
+        </div>
 
         <div id="collapse{{ programmer.programmer_id }}" class="collapse"
                 aria-labelledby="heading{{ programmer.programmer_id }}" data-parent="#accordionExample">
