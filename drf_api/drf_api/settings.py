@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'querymanager',
     'api',
     'rest_framework',
+    # Graphene
+    'graphene_django',
 ]
 
 MIDDLEWARE = [
