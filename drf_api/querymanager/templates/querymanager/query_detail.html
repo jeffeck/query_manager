@@ -1,5 +1,26 @@
 {% extends "querymanager/base.html" %}
 {% load static %}
+
+{% block stylesheet %}
+<style>
+a:link {
+    text-decoration: none;
+}
+a:visited {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+a:active {
+    text-decoration: none;
+    color: black;
+}
+</style>
+{% endblock %}
+
+
+
 {% block content %}
 
 <div class="row">
@@ -14,7 +35,7 @@
             </div>
 
             <ul class="list-group list-group-flush">
-                <li class="list-group-item">Author: {{query.author.name }}</li>
+                <a href="{% url 'programmer_detail' query.author.programmer_id %}"><li class="list-group-item">Author: {{query.author.name }}</li></a>
                 <li class="list-group-item">Created: {{ query.created_at }}</li>
                 <li class="list-group-item">Updated: {{ query.updated_at }}</li>
                 {% if query.tags.all %}
