@@ -24,9 +24,13 @@ from .schema import schema
 urlpatterns = [
     path('', include('querymanager.urls')),
     path('api-auth/', include('api.urls')),
-    path('graphql', GraphQLView.as_view(
+    path('graphql/', GraphQLView.as_view(
         graphiql=True,
         schema=schema
     )), 
+    path('gql/', GraphQLView.as_view(
+        graphiql=False,
+        schema=schema
+    )),
     path('admin/', admin.site.urls),
 ]

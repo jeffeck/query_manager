@@ -5,6 +5,31 @@
 {% block script %}
 <script>
 
+    $(".gql").click(function () {
+        // api_id = $(this)[0].id;
+        // programmer_id = api_id.substring(4,);
+        console.log('gql clicked');
+
+        qry = "{programmer{name}}";
+
+        $.ajax({
+            url: '/gql?query=' + qry,
+            dataType: 'json',
+            success: function(result) {
+                console.log(result);
+                // apply logic to result of api call
+                // rev_title = result.title.split("").reverse().join("");
+                // modify dom with new information
+                // $("#title").text(result.title);
+                // $("#hiredate").text("Hired on: " + result.hire_date);
+            },
+            error: function(status, exception) {
+                alert('error message fired')
+            }
+        });
+    });
+
+
     $(".api").click(function () {
         api_id = $(this)[0].id;
         programmer_id = api_id.substring(4,);
@@ -46,6 +71,7 @@
                 <p class="card-text" id="hiredate">{{ programmer.hire_date|date:'l, F d, Y' }}</p>
                 <p class="card-text" id="title"></p>
                 <a href="#" class="btn btn-primary api" id="api_{{ programmer.programmer_id }}">Call API</a>
+                <a href="#" class="btn btn-primary gql" id="gql_{{ programmer.programmer_id }}">GraphQL</a>
             </div>
           </div>
 
