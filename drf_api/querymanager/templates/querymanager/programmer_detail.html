@@ -43,7 +43,7 @@
                 // apply logic to result of api call
                 // rev_title = result.title.split("").reverse().join("");
                 // modify dom with new information
-                $("#title").text(result.title);
+                $("#title").text("Title: " + result.title);
                 // $("#hiredate").text("Hired on: " + result.hire_date);
             },
             error: function(status, exception) {
@@ -68,8 +68,8 @@
             <div class="card-body">
 
                 <h5 class="card-title">{{ programmer.name }}</h5>
-                <p class="card-text" id="hiredate">{{ programmer.hire_date|date:'l, F d, Y' }}</p>
-                <p class="card-text" id="title"></p>
+                <p class="card-text" id="hiredate">Hire Date: {{ programmer.hire_date|date:'l, F d, Y' }}</p>
+                <p class="card-text" id="title">Title: ITTA</p>
                 <a href="#" class="btn btn-primary api" id="api_{{ programmer.programmer_id }}">Call API</a>
                 <a href="#" class="btn btn-primary gql" id="gql_{{ programmer.programmer_id }}">GraphQL</a>
             </div>
